@@ -1,69 +1,131 @@
-import Image from "next/image";
+import {
+  ArrowDown,
+  ArrowDownRight,
+  ArrowRight,
+  ArrowUpRight,
+  Check,
+  Cpu,
+  Download,
+  Plane,
+  Radio,
+} from "lucide-react";
+import InteractivePreview from "@/components/interactive-preview";
+import {
+  DownloadSection,
+  FaqSection,
+  FeatureGrid,
+  Footer,
+  LocalAiArchitecture,
+  Navbar,
+  QuickStart,
+  SystemRequirements,
+} from "@/components/site-sections";
+
+const capabilityHighlights = [
+  { icon: Radio, label: "GSX Pro connected", detail: "Ground services, in sync" },
+  { icon: Cpu, label: "100% local AI", detail: "No cloud. No subscription." },
+  { icon: Plane, label: "Built for MSFS 2024", detail: "A more complete turnaround" },
+];
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
+    <>
+      <Navbar />
+      <main>
+        <section className="hero section-shell" id="top">
+          <div className="hero-grid">
+            <div className="hero-copy">
+              <div className="eyebrow"><span className="eyebrow-line" /> YOUR TURNAROUND, UNDER CONTROL</div>
+              <h1>
+                Ground ops,
+                <br />
+                <span>cleared for</span> takeoff.
+              </h1>
+              <p className="hero-lede">
+                A smarter ground-handling companion for Microsoft Flight Simulator 2024.
+                Take command of GSX Pro, brief your flight, and talk to your local AI copilot.
+              </p>
+              <div className="hero-actions">
+                <a className="button button-primary" href="#download" aria-label="View Ground Manager Pro downloads">
+                  <Download size={17} strokeWidth={2.2} />
+                  Get Ground Manager Pro
+                  <ArrowUpRight size={16} />
+                </a>
+                <a className="button button-quiet" href="#features">
+                  Explore features <ArrowDownRight size={16} />
+                </a>
+              </div>
+              <div className="hero-release">
+                <span className="release-dot" />
+                <span>Release <strong>v1.4.1</strong></span>
+                <span className="release-divider" />
+                <span>Windows 10 / 11 · 64-bit</span>
+              </div>
+              <div className="hero-highlights">
+                {capabilityHighlights.map(({ icon: Icon, label, detail }) => (
+                  <div className="highlight-item" key={label}>
+                    <span className="highlight-icon"><Icon size={17} /></span>
+                    <span><strong>{label}</strong><small>{detail}</small></span>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="hero-visual" id="preview">
+              <div className="visual-orbit orbit-one" />
+              <div className="visual-orbit orbit-two" />
+              <div className="visual-coordinates">47°27&apos;N &nbsp; 008°33&apos;E</div>
+              <div className="visual-caption"><span className="live-pulse" /> LIVE UI PREVIEW <span>INTERACTIVE DEMO</span></div>
+              <InteractivePreview />
+              <div className="visual-bottom-note"><span>LOCAL AGENT</span><code>127.0.0.1:8383</code><span className="note-ready">READY</span></div>
+            </div>
+          </div>
+          <div className="hero-bottomline"><span>DESIGNED FOR THE FLOW BETWEEN ARRIVAL AND DEPARTURE</span><ArrowDown size={15} /></div>
+        </section>
+
+        <section className="section-shell feature-section" id="features">
+          <div className="section-heading">
+            <div>
+              <div className="eyebrow"><span className="eyebrow-line" /> ONE COCKPIT. EVERY TURNAROUND.</div>
+              <h2>Every ground task,<br /><span>in its place.</span></h2>
+            </div>
+            <p>From the first chock to the final taxi clearance, Ground Manager Pro brings your operation into one calm, connected workspace.</p>
+          </div>
+          <FeatureGrid />
+        </section>
+
+        <section className="section-shell ai-section" id="copilot">
+          <div className="ai-layout">
+            <div className="ai-copy">
+              <div className="eyebrow"><span className="eyebrow-line" /> YOUR VOICE. YOUR HARDWARE. YOUR PC.</div>
+              <h2>Intelligence that<br /><span>stays on board.</span></h2>
+              <p className="section-lede">A complete voice-to-action pipeline runs locally on your Windows PC. No cloud round-trips, API keys, or recurring AI fees.</p>
+              <div className="ai-points">
+                <div><span className="check-mark"><Check size={14} /></span><span><strong>Universal push-to-talk</strong><small>Bind keyboard, mouse, yoke, joystick, or throttle controls.</small></span></div>
+                <div><span className="check-mark"><Check size={14} /></span><span><strong>GPU or CPU inference</strong><small>Choose a local Qwen2.5 or Phi-3.5 model to suit your system.</small></span></div>
+                <div><span className="check-mark"><Check size={14} /></span><span><strong>Made for the cockpit</strong><small>Natural male pilot voice with an animated, lip-synced First Officer.</small></span></div>
+              </div>
+              <a className="text-link" href="#requirements">See the system requirements <ArrowRight size={16} /></a>
+            </div>
+            <LocalAiArchitecture />
+          </div>
+        </section>
+
+        <section className="section-shell requirements-section" id="requirements">
+          <div className="section-heading compact">
+            <div>
+              <div className="eyebrow"><span className="eyebrow-line" /> BUILT FOR YOUR SIM RIG</div>
+              <h2>Ready for your <span>flight deck.</span></h2>
+            </div>
+            <p>Designed for Windows 10 and 11, Microsoft Flight Simulator 2024, and FSDT GSX Pro.</p>
+          </div>
+          <SystemRequirements />
+        </section>
+
+        <DownloadSection />
+        <QuickStart />
+        <FaqSection />
       </main>
-    </div>
+      <Footer />
+    </>
   );
 }
