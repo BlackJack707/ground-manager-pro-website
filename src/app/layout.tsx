@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     title: "Ground Manager Pro — Ground Operations for MSFS 2024",
     description,
   },
-  icons: { icon: "/icon.svg", shortcut: "/icon.svg" },
+  icons: { icon: "icon.svg", shortcut: "icon.svg" },
 };
 
 export const viewport: Viewport = {
